@@ -1,0 +1,10 @@
+HOME_URL = '/'
+ABOUT_URL = '/about'
+COMMUNITY_URL = '/community'
+CONTACT_URL = '/contact'
+LOGIN_URL = '/login'
+SIGNUP_URL = '/signup'
+LOGOUT_URL = '/logout'
+PLATFORM_URL = '/platform'
+
+EMAIL = 'mycorreo@gmail.com'
