@@ -1,6 +1,7 @@
 import reflex as rx
 
-from ..navigation import urls, state
+from ..constants import urls
+from ..states import nav_state as state
 
 def navbar_icon(icon: str, url: str) -> rx.Component:
     return rx.link(

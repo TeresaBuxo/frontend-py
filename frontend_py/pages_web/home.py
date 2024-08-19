@@ -1,9 +1,9 @@
 import reflex as rx 
 
 from .base import base_page
-from ..navigation import urls
+from ..constants import urls
 
-@rx.page(route=urls.HOME_URL)
+@rx.page(route=urls.HOME_URL, title = 'Home')
 def home_page() -> rx.Component:
     my_child = rx.box(
     rx.desktop_only(

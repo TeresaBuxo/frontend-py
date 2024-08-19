@@ -1,4 +1,5 @@
 import reflex as rx
+from ..constants import urls
 
 def sidebar_item(
     text: str, icon: str, href: str
@@ -29,7 +30,7 @@ def sidebar_item(
 def sidebar_items() -> rx.Component:
     return rx.vstack(
         sidebar_item("Home", "warehouse", "/#"),
-        sidebar_item("Projects", "square-library", "/#"),
+        sidebar_item("Projects", "square-library", urls.PROJECTS_URL),
         sidebar_item("Community", "users", "/#"),
         sidebar_item("Videos", "square-play", "/#"),
         sidebar_item("How-To's", "book", "/#"),

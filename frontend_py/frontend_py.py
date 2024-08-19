@@ -2,24 +2,14 @@
 
 import reflex as rx
 
-from .pages import home,about,contact,community,login,signup,platform
-from .navigation import urls
+from .pages_web import home,about,contact,community,login,signup
+from .pages_platform import platform,platform_projects
+from .constants import urls
 from rxconfig import config
-
-
-class State(rx.State):
-    """The app state."""
-    label = "hola!"
-
-    def handle_input_change(self,val):
-        self.label = val
-
-    ...
-
 
 app = rx.App(
     theme=rx.theme(
-        appearance="dark", 
+        appearance="light", 
         has_background=True, 
         panel_background="solid",
         scaling="90%",

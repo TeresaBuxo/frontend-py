@@ -2,4 +2,6 @@
 *.py[cod]
 .web
 __pycache__/
+assets/external/
+backend/
 venv/

@@ -1,7 +1,8 @@
 import reflex as rx 
 
 from .base import base_page
-from ..navigation import urls,state
+from ..constants import urls
+from ..states import nav_state as state
 
 class ContactState(rx.State):
     title_text: str = "Contacta con nosotros"

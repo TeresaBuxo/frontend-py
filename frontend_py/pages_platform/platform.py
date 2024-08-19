@@ -1,10 +1,10 @@
 import reflex as rx 
 
-from .base import base_page
-from ..navigation import urls
+from .platform_base import platform_base
+from ..constants import urls
 
-@rx.page(route=urls.ABOUT_URL)
-def about_page() -> rx.Component:
+@rx.page(route=urls.PLATFORM_URL)
+def platform_page() -> rx.Component:
     my_child = rx.vstack(
             rx.heading("About Us", size="9"),
             rx.text(
@@ -13,7 +13,7 @@ def about_page() -> rx.Component:
             spacing="5",
             justify="center",
             align="center",
-            min_height="85vh",
+            height="75vw",
             id='my-child'
         )
-    return base_page(my_child)
+    return platform_base(my_child)

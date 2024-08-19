@@ -1,7 +1,7 @@
 import reflex as rx 
 
 from .base import base_page
-from ..navigation import urls
+from ..constants import urls
 from ..components.map import map_location
 from ..components.dropdown_filter import selectors,SelectorsState
 

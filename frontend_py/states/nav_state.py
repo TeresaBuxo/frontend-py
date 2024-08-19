@@ -1,5 +1,5 @@
 import reflex as rx
-from . import urls
+from ..constants import urls
 
 class NavState(rx.State):
     def to_home(self):

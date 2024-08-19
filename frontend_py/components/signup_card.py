@@ -1,5 +1,5 @@
 import reflex as rx
-from ..navigation import urls
+from ..constants import urls
 
 def signup_multiple_thirdparty() -> rx.Component:
     return rx.card(
@@ -103,7 +103,7 @@ def signup_multiple_thirdparty() -> rx.Component:
                     size="3",
                 ),
                 rx.icon_button(
-                    rx.icon(tag="twitter"),
+                    rx.icon(tag="linkedin"),
                     variant="soft",
                     size="3",
                 ),

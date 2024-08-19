@@ -1,7 +1,7 @@
 import reflex as rx 
 
 from .base import base_page
-from ..navigation import urls
+from ..constants import urls
 from ..components.signup_card import signup_multiple_thirdparty
 
 @rx.page(route=urls.SIGNUP_URL)

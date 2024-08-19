@@ -1,6 +1,7 @@
 import reflex as rx
 
-from ..navigation import urls, state
+from ..constants import urls
+from ..states import nav_state
 
 def navbar_link(text: str, url: str) -> rx.Component:
     return rx.link(
@@ -32,14 +33,15 @@ def navbar() -> rx.Component:
                     spacing="5",
                 ),
                 rx.hstack(
+                    rx.color_mode.button(color="teal"),
                     rx.button(
                         "Sign Up",
                         size="3",
                         variant="outline",
                         color="teal",
-                        on_click=state.NavState.to_signup()
+                        on_click=nav_state.NavState.to_signup()
                     ),
-                    rx.button("Log In", size="3",on_click=state.NavState.to_login()),
+                    rx.button("Log In", size="3",on_click=nav_state.NavState.to_login()),
                     spacing="4",
                     justify="end",
                     color_scheme="teal",
@@ -68,13 +70,13 @@ def navbar() -> rx.Component:
                         rx.icon("menu", size=30)
                     ),
                     rx.menu.content(
-                        rx.menu.item("Home", on_click=state.NavState.to_home),
-                        rx.menu.item("About us", on_click=state.NavState.to_about_us),
-                        rx.menu.item("Community", on_click=state.NavState.to_community),
-                        rx.menu.item("Contact", on_click=state.NavState.to_contact),
+                        rx.menu.item("Home", on_click=nav_state.NavState.to_home),
+                        rx.menu.item("About us", on_click=nav_state.NavState.to_about_us),
+                        rx.menu.item("Community", on_click=nav_state.NavState.to_community),
+                        rx.menu.item("Contact", on_click=nav_state.NavState.to_contact),
                         rx.menu.separator(),
-                        rx.menu.item("Log in",  on_click=state.NavState.to_login),
-                        rx.menu.item("Sign up", on_click=state.NavState.to_signup),
+                        rx.menu.item("Log in",  on_click=nav_state.NavState.to_login),
+                        rx.menu.item("Sign up", on_click=nav_state.NavState.to_signup),
                     ),
                     justify="end",
                 ),

@@ -96,6 +96,7 @@ def low_footer()-> rx.Component:
                             width="2em",
                             height="auto",
                             border_radius="25%",
+                            white_space="nowrap",
                         ),
                         rx.text(
                             "© 2024 CareAgain, Inc",
@@ -115,10 +116,12 @@ def low_footer()-> rx.Component:
                     socials(),
                     spacing="4",
                     flex_direction=["column", "column", "row"],
-                    width="100%",
+                    width="95%",
                 ),
                 spacing="5",
-                width="95%",
+                width="100%",
+                justify="center",
+                align_items="center",
             ),
 
 
