@@ -11,7 +11,7 @@ def signup_page() -> rx.Component:
                     spacing="5",
                     justify="center",
                     align="center",
-                    min_height="70vh",
+                    min_height="90vh",
                     id='my-child',
                 )
     return base_page(my_child)

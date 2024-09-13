@@ -1,15 +1,64 @@
 import reflex as rx
 from ..constants import urls
+from ..states.auth_state import AuthState
+
+def list_icons() ->rx.Component:
+    return rx.fragment(
+        rx.hstack(
+                rx.divider(margin="0"),
+                rx.text(
+                    "Or continue with",
+                    white_space="nowrap",
+                    weight="medium",
+                ),
+                rx.divider(margin="0"),
+                align="center",
+                width="100%",
+            ),
+            rx.center(
+                rx.icon_button(
+                    rx.icon(tag="github"),
+                    variant="soft",
+                    size="3",
+                ),
+                rx.icon_button(
+                    rx.icon(tag="facebook"),
+                    variant="soft",
+                    size="3",
+                ),
+                rx.icon_button(
+                    rx.icon(tag="linkedin"),
+                    variant="soft",
+                    size="3",
+                ),
+                spacing="4",
+                direction="row",
+                width="100%",
+            ),
+    )
 
 def login_multiple_thirdparty() -> rx.Component:
     return rx.card(
         rx.vstack(
             rx.flex(
-                rx.image(
-                    src="/logo0.png",
-                    width="2.5em",
-                    height="auto",
-                    border_radius="25%",
+                rx.hstack(
+                    rx.image(
+                        src="/logo0.png",
+                        width="2.5em",
+                        height="auto",
+                        border_radius="25%",
+                    ),
+                    rx.cond(
+                        AuthState.login_error,
+                        rx.callout(
+                                f"Email already in use",
+                                icon="triangle_alert",
+                                size="1",
+                                color_scheme="yellow",
+                                role="alert",
+                            ),
+                        rx.fragment(),
+                    ),
                 ),
                 rx.heading(
                     "Log in to your account",
@@ -47,6 +96,7 @@ def login_multiple_thirdparty() -> rx.Component:
                     type="email",
                     size="3",
                     width="100%",
+                    on_change=AuthState.set_email,
                 ),
                 spacing="2",
                 justify="start",
@@ -73,42 +123,13 @@ def login_multiple_thirdparty() -> rx.Component:
                     type="password",
                     size="3",
                     width="100%",
+                    on_change=AuthState.set_password,
                 ),
                 spacing="2",
                 width="100%",
             ),
-            rx.button("Log in", size="3", width="100%"),
-            rx.hstack(
-                rx.divider(margin="0"),
-                rx.text(
-                    "Or continue with",
-                    white_space="nowrap",
-                    weight="medium",
-                ),
-                rx.divider(margin="0"),
-                align="center",
-                width="100%",
-            ),
-            rx.center(
-                rx.icon_button(
-                    rx.icon(tag="github"),
-                    variant="soft",
-                    size="3",
-                ),
-                rx.icon_button(
-                    rx.icon(tag="facebook"),
-                    variant="soft",
-                    size="3",
-                ),
-                rx.icon_button(
-                    rx.icon(tag="linkedin"),
-                    variant="soft",
-                    size="3",
-                ),
-                spacing="4",
-                direction="row",
-                width="100%",
-            ),
+            rx.button("Log in", size="3", width="100%", on_click=AuthState.handle_login),
+            #list_icons(),
             spacing="6",
             width="100%",
         ),

@@ -1,4 +1,5 @@
 import reflex as rx
+from ..constants import urls
 
 def footer_item(text: str, href: str) -> rx.Component:
     return rx.link(rx.text(text, size="3"), href=href)
@@ -78,9 +79,9 @@ def socials() -> rx.Component:
         # social_link("instagram", "/#"),
         # social_link("twitter", "/#"),
         # social_link("facebook", "/#"),
-        social_link("youtube", "/#"),
-        social_link("linkedin", "/#"),
-        social_link("github","/"),
+        social_link("youtube", urls.YOUTUBE_URL),
+        social_link("linkedin", urls.LINKEDIN_URL),
+        social_link("github",urls.GITHUB_URL),
         spacing="3",
         justify_content=["center", "center", "end"],
         width="100%",
