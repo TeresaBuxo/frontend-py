@@ -5,6 +5,9 @@ URL_DATABASE = f'mysql+pymysql://{cs.USER}:{cs.PASSWORD}@{cs.HOST}:{cs.PORT}/{cs
 
 config = rx.Config(
     app_name="frontend_py",
+    stylesheets=[
+        "/fonts/ArialRoundedMTBold/arial_rounded.css",  # This path is relative to assets/
+    ],
     # style = {
     #     "font_family": "Arial Rounded",
     #     "font_size": "16px",
@@ -12,5 +15,5 @@ config = rx.Config(
     db_url = URL_DATABASE,
     frontend_port=3000,
     deploy_url='http://localhost:3000',
-    api_url = "http://localhost:8000"
+    #api_url = "http://localhost:8000"
 )

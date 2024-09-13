@@ -2,7 +2,7 @@
 
 import reflex as rx
 
-from .pages_web import home,about,contact,community,login,signup
+from .pages_web import home,login,signup #contact,community,
 from .pages_platform import platform,platform_projects
 from .constants import urls
 from rxconfig import config

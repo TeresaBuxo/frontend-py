@@ -8,6 +8,12 @@ class NavState(rx.State):
     def to_about_us(self):
         return rx.redirect(urls.ABOUT_URL)
 
+    def to_problem(self):
+        return rx.redirect(urls.PROBLEM_URL)
+
+    def to_solution(self):
+        return rx.redirect(urls.SOLUTION_URL)
+
     def to_community(self):
         return rx.redirect(urls.COMMUNITY_URL)
 

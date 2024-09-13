@@ -1,6 +1,9 @@
 reflex==0.5.6
 reflex-local-auth
 
+#requests
+httpx
+
 
 #backend
-pymsql
+pymysql

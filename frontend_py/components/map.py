@@ -10,10 +10,12 @@ def map_location():
         showlegend = False,
         margin = {'l':0, 'r':0, 'b':0, 't':0})
 
-    return rx.center(
-                rx.plotly(data=fig),
-                height="100%",
+    return rx.fragment(
+                rx.plotly(data=fig,
+                    width="90%",
+                    height="80h"
+                ),
+                height="80hv",
                 width="100%",
-                justify="centre",
                 id="box-map",
             )
