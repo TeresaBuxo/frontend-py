@@ -1,13 +1,12 @@
 import reflex as rx 
-
-from .base import base_page
+from .webpage_base import base_page
 from ..constants import urls
-from ..components.signup_card import signup_multiple_thirdparty
+from ..components.login_card import login_multiple_thirdparty
 
-@rx.page(route=urls.SIGNUP_URL)
-def signup_page() -> rx.Component:
-    my_child = rx.center(
-                    signup_multiple_thirdparty(),
+@rx.page(route=urls.LOGIN_URL)
+def login_page() -> rx.Component:
+    my_child = rx.vstack(
+                    login_multiple_thirdparty(),
                     spacing="5",
                     justify="center",
                     align="center",

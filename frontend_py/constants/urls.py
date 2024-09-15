@@ -15,6 +15,8 @@ EMAIL = 'careagain.org@gmail.com'
 # platform
 PLATFORM_URL = '/platform'
 PROJECTS_URL = '/projects'
+PROFILE_URL = '/profile'
+VIDEOS_URL = '/videos'
 
 # social media
 YOUTUBE_URL = "https://www.youtube.com/@care-again-org"

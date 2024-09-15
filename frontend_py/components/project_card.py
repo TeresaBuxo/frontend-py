@@ -32,7 +32,7 @@ def project_card(image: str, project_title: str, project_description: str, proje
             size="5",
         ),
         height = 'auto',
-        width = '100vw',
+        #width = '100vw',
         align='start',
 
     )
@@ -50,7 +50,7 @@ def project_grid()-> rx.Component:
             rx.text("No projects available")
         ),   
         spacing_y="4",
-        width="100%",
+        #width="100%",
         align ="start",
         justify = "start"
     )

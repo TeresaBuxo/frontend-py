@@ -1,6 +1,6 @@
 import reflex as rx 
 
-from .base import base_page
+from .webpage_base import base_page
 from ..constants import urls
 from ..components.map import map_location
 

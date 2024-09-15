@@ -1,6 +1,11 @@
 import reflex as rx
+from ..components.sidebar import sidebar
+from ..components.footer import footer_newsletter,low_footer
+from ..components.navbar_platform import navbar_platform
 from frontend_py.components.navbar import navbar
 from frontend_py.components.footer import low_footer
+from ..states.auth_state import AuthState
+from ..constants import urls
 
 def base_page(child: rx.Component ,*args,**kwargs) -> rx.Component:
     return rx.fragment(
@@ -12,4 +17,3 @@ def base_page(child: rx.Component ,*args,**kwargs) -> rx.Component:
         ),
         low_footer()
     )
-

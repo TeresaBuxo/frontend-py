@@ -1,9 +1,7 @@
 """Welcome to Reflex! This file outlines the steps to create a basic app."""
 
 import reflex as rx
-
-from .pages_web import home,login,signup #contact,community,
-from .pages_platform import platform,platform_projects
+from .pages import login, projects, signup,platform, webpage,profile,videos #contact,community,
 from .constants import urls
 from rxconfig import config
 
