@@ -29,96 +29,100 @@ def sidebar_item(
 
 def sidebar_items() -> rx.Component:
     return rx.vstack(
-        sidebar_item("Home", "warehouse", "/#"),
+        sidebar_item("Home", "warehouse", urls.PLATFORM_URL),
         sidebar_item("Projects", "square-library", urls.PROJECTS_URL),
-        sidebar_item("Community", "users", "/#"),
-        sidebar_item("Videos", "square-play", "/#"),
-        sidebar_item("How-To's", "book", "/#"),
-        sidebar_item("Market", "store", "/#"),
-        sidebar_item("Dashboard", "layout-dashboard", "/#"),
-        sidebar_item("Analytics", "bar-chart-4", "/#"),
-        sidebar_item("Messages", "mail", "/#"),
+        sidebar_item("Community", "users", urls.PLATFORM_URL),
+        sidebar_item("Videos", "square-play", urls.VIDEOS_URL),
+        #sidebar_item("How-To's", "book", urls.PLATFORM_URL),
+        sidebar_item("Market", "store", urls.PLATFORM_URL),
+        #sidebar_item("Dashboard", "layout-dashboard", urls.PLATFORM_URL),
+        sidebar_item("Analytics", "bar-chart-4", urls.PLATFORM_URL),
+        sidebar_item("Messages", "mail", urls.PLATFORM_URL),
+        sidebar_item("Questions", "file-question", urls.PLATFORM_URL),
         spacing="1",
         width="100%",
     )
+
+def profile_button() -> rx.Component:
+    return rx.container(
+            rx.link(
+                rx.hstack(
+                    rx.icon_button(
+                        rx.icon("user"),
+                        size="3",
+                        radius="full",
+                    ),
+                    rx.vstack(
+                    rx.box(
+                        rx.text(
+                            "My profile",
+                            size="3",
+                            weight="bold",
+                        ),
+                        rx.text(
+                            "user@reflex.dev",
+                            size="2",
+                            weight="medium",
+                        ),
+                        width="100%",
+                    ),
+                    spacing="0",
+                    align="start",
+                    justify="start",
+                    width="100%",
+                ),
+                padding_x="0.5rem",
+                align="center",
+                justify="start",
+                width="100%",
+            ),
+            href=urls.PROFILE_URL
+        )
+    )
+
+def brand_header() ->rx.Component:
+    return rx.hstack(
+                rx.image(
+                src="/logo1.png",
+                width="2.25em",
+                height="auto",
+                border_radius="25%",
+            ),
+            rx.heading(
+                "CareAgain", size="7", weight="bold"
+            ),
+            align="center",
+            justify="start",
+            padding_x="0.5rem",
+            width="100%",
+        ),
 
 
 def sidebar() -> rx.Component:
     return rx.box(
         rx.desktop_only(
             rx.vstack(
-                rx.hstack(
-                    rx.image(
-                        src="/logo1.png",
-                        width="2.25em",
-                        height="auto",
-                        border_radius="25%",
-                    ),
-                    rx.heading(
-                        "CareAgain", size="7", weight="bold"
-                    ),
-                    align="center",
-                    justify="start",
-                    padding_x="0.5rem",
-                    width="100%",
-                ),
+                brand_header(),
                 sidebar_items(),
                 rx.spacer(),
                 rx.vstack(
-                    rx.vstack(
-                        sidebar_item(
-                            "Settings", "settings", "/#"
-                        ),
-                        sidebar_item(
-                            "Log out", "log-out", "/#"
-                        ),
-                        spacing="1",
-                        width="100%",
-                    ),
+                    sidebar_item("Settings", "settings", "/#"),
+                    #sidebar_item("Log out", "log-out", "/#"),
                     rx.divider(),
-                    rx.hstack(
-                        rx.icon_button(
-                            rx.icon("user"),
-                            size="3",
-                            radius="full",
-                        ),
-                        rx.vstack(
-                            rx.box(
-                                rx.text(
-                                    "My account",
-                                    size="3",
-                                    weight="bold",
-                                ),
-                                rx.text(
-                                    "user@reflex.dev",
-                                    size="2",
-                                    weight="medium",
-                                ),
-                                width="100%",
-                            ),
-                            spacing="0",
-                            align="start",
-                            justify="start",
-                            width="100%",
-                        ),
-                        padding_x="0.5rem",
-                        align="center",
-                        justify="start",
-                        width="100%",
-                    ),
+                    profile_button(),
                     width="100%",
-                    spacing="5",
+                    spacing="1",
                 ),
                 spacing="5",
-                # position="fixed",
-                # left="0px",
-                # top="0px",
-                # z_index="5",
+                position="fixed",
+                left="0px",
+                top="0px",
+                z_index="5",
                 padding_x="1em",
                 padding_y="1.5em",
                 bg=rx.color("accent", 3),
                 align="start",
-                height="82vw",
+                height="100vh",
                 width="16em",
             ),
         ),
@@ -140,50 +144,10 @@ def sidebar() -> rx.Component:
                             sidebar_items(),
                             rx.spacer(),
                             rx.vstack(
-                                rx.vstack(
-                                    sidebar_item(
-                                        "Settings",
-                                        "settings",
-                                        "/#",
-                                    ),
-                                    sidebar_item(
-                                        "Log out",
-                                        "log-out",
-                                        "/#",
-                                    ),
-                                    width="100%",
-                                    spacing="1",
-                                ),
+                                sidebar_item("Settings","settings","/#",),
+                                #sidebar_item("Log out","log-out","/#",),
                                 rx.divider(margin="0"),
-                                rx.hstack(
-                                    rx.icon_button(
-                                        rx.icon("user"),
-                                        size="3",
-                                        radius="full",
-                                    ),
-                                    rx.vstack(
-                                        rx.box(
-                                            rx.text(
-                                                "My account",
-                                                size="3",
-                                                weight="bold",
-                                            ),
-                                            rx.text(
-                                                "user@reflex.dev",
-                                                size="2",
-                                                weight="medium",
-                                            ),
-                                            width="100%",
-                                        ),
-                                        spacing="0",
-                                        justify="start",
-                                        width="100%",
-                                    ),
-                                    padding_x="0.5rem",
-                                    align="center",
-                                    justify="start",
-                                    width="100%",
-                                ),
+                                profile_button(),
                                 width="100%",
                                 spacing="5",
                             ),
@@ -202,5 +166,7 @@ def sidebar() -> rx.Component:
                 direction="left",
             ),
             padding="1em",
+            height="100%",
+            position="fixed",
         ),
     )

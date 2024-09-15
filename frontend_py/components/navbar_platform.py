@@ -1,7 +1,7 @@
 import reflex as rx
-
+from ..components.notification_popover import notification_popover
 from ..constants import urls
-from ..states import nav_state as state
+from ..states import nav_state, auth_state
 
 def navbar_icon(icon: str, url: str) -> rx.Component:
     return rx.link(
@@ -23,12 +23,18 @@ def navbar_platform() -> rx.Component:
                     ),
                 rx.menu.separator(),
                 rx.color_mode.button(color="teal"),
-                navbar_icon("bell", urls.HOME_URL),
-                rx.icon_button(
-                        rx.icon("user"),
-                        size="3",
-                        radius="full",
+                notification_popover(),
+                rx.menu.root(
+                    rx.menu.trigger(
+                        rx.icon_button("user", size="3",radius="full")
                     ),
+                    rx.menu.content(
+                        rx.menu.item("My profile", on_click=nav_state.NavState.to_profile),
+                        rx.menu.separator(),
+                        rx.menu.item("Log out",  on_click=auth_state.AuthState.handle_logout),
+                    ),
+                    justify="end",
+                ),
                 spacing="5",
                 justify="end",
                 align_items="center"
