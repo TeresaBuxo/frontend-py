@@ -49,9 +49,9 @@ def login_multiple_thirdparty() -> rx.Component:
                         border_radius="25%",
                     ),
                     rx.cond(
-                        AuthState.login_error,
+                        AuthState.show_error,
                         rx.callout(
-                                f"Email already in use",
+                                AuthState.error_message,
                                 icon="triangle_alert",
                                 size="1",
                                 color_scheme="yellow",

@@ -29,3 +29,6 @@ class NavState(rx.State):
     def to_platfom(self):
         return rx.redirect(urls.PLATFORM_URL)
     
+    def to_profile(self):
+        return rx.redirect(urls.PROFILE_URL)
+    

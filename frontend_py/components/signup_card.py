@@ -48,9 +48,9 @@ def signup_multiple_thirdparty() -> rx.Component:
                         border_radius="25%",
                     ),
                     rx.cond(
-                        AuthState.signup_error,
+                        AuthState.show_error,
                         rx.callout(
-                                f"Your email or password are invalid",
+                                AuthState.error_message,
                                 icon="triangle_alert",
                                 size="1",
                                 color_scheme="yellow",
@@ -123,7 +123,16 @@ def signup_multiple_thirdparty() -> rx.Component:
             ),
             rx.box(
                 rx.checkbox(
-                    "Agree to Terms and Conditions",
+                    rx.hstack(
+                        rx.text(
+                            "Agree to",
+                            size="3",
+                            text_align="left",
+                        ),
+                        rx.link("Terms and Conditions", href=urls.LOGIN_URL, size="3"),
+                        spacing="2",
+                        opacity="0.8",
+                        width="100%"),
                     default_checked=True,
                     spacing="2",
                 ),
