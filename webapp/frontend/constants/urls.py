@@ -17,8 +17,12 @@ PLATFORM_URL = '/platform'
 PROJECTS_URL = '/projects'
 PROFILE_URL = '/profile'
 VIDEOS_URL = '/videos'
+COMMUNITY_PLATFORM = '/community'
 
 # social media
 YOUTUBE_URL = "https://www.youtube.com/@care-again-org"
 GITHUB_URL = "https://github.com/"
 LINKEDIN_URL = "https://linkedin.com/"
+
+# custom no_sql
+UPLOADED_FILES_DIR ='./no_sql'

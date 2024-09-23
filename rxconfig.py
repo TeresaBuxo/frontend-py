@@ -1,10 +1,10 @@
 import reflex as rx
-from backend.config import constants as cs
+from webapp.backend.config import constants as cs
 
 URL_DATABASE = f'mysql+pymysql://{cs.USER}:{cs.PASSWORD}@{cs.HOST}:{cs.PORT}/{cs.SCHEMA}'
 
 config = rx.Config(
-    app_name="frontend_py",
+    app_name="webapp",
     stylesheets=[
         "/fonts/ArialRoundedMTBold/arial_rounded.css",  # This path is relative to assets/
     ],
@@ -15,5 +15,5 @@ config = rx.Config(
     db_url = URL_DATABASE,
     frontend_port=3000,
     deploy_url='http://localhost:3000',
-    #api_url = "http://localhost:8000"
+    api_url = "http://localhost:8000"
 )

@@ -31,7 +31,7 @@ def sidebar_items() -> rx.Component:
     return rx.vstack(
         sidebar_item("Home", "warehouse", urls.PLATFORM_URL),
         sidebar_item("Projects", "square-library", urls.PROJECTS_URL),
-        sidebar_item("Community", "users", urls.PLATFORM_URL),
+        sidebar_item("Community", "users", urls.COMMUNITY_PLATFORM),
         sidebar_item("Videos", "square-play", urls.VIDEOS_URL),
         #sidebar_item("How-To's", "book", urls.PLATFORM_URL),
         sidebar_item("Market", "store", urls.PLATFORM_URL),

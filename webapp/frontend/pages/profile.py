@@ -1,7 +1,6 @@
 import reflex as rx
 from .platform_base import platform_base
 from ..constants import urls
-from ..components.project_card import project_card,project_grid
 from ..components.forms_popover import add_new_popover
 from ..components.input_text import EditableText
 from ..states.project_state import ProjectState
@@ -76,8 +75,8 @@ def user_section() -> rx.Component():
 def add_new(text:str)-> rx.Component():
     return rx.container(
         rx.hstack(
-            add_new_popover(),
-            rx.text(text),
+            add_new_popover(text),
+            rx.text(f"Click to add a new {text}"),
             align="center",
             width="100vh"    
         )
@@ -92,13 +91,13 @@ def profile() -> rx.Component:
                 user_section(),
                 rx.divider(),
                 section_title("building-2",'My Institution',"Institutions", urls.PROJECTS_URL),
-                add_new("Click to add your instituion/group"),
+                add_new("intitution"),
                 rx.divider(),
-                section_title("building-2",'My Projects',"Projects", urls.PROJECTS_URL),
-                add_new("Click to add new project"),
+                section_title("square-library",'My Projects',"Projects", urls.PROJECTS_URL),
+                add_new("project"),
                 rx.divider(),
                 section_title("square-play",'My Video',"Videos", urls.PROJECTS_URL),
-                add_new("Click to add new video link"),
+                add_new("video"),
                 spacing="5",
                 align = "start",
                 justify="start",

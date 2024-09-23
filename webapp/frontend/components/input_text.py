@@ -56,32 +56,47 @@ class EditableText(rx.ComponentState):
                 edit_controls,
                 on_submit=lambda _: cls.stop_editing(),
             ),
-            rx.text(
-                value,
-                on_click=cls.start_editing(value),
-                cursor=cursor,
-                **props,
-            ),
+            rx.hstack(
+                rx.text(
+                    value,
+                    cursor=cursor,
+                    **props,
+                ),
+                rx.icon_button("pencil",
+                    variant="soft",
+                    on_click=cls.start_editing(value),
+                )
+            )
         )
 
-# def input_text_editable(my_title:str,my_icon:str,my_placeholder:str,callback:Callable[[],None]) -> rx.Component:
-#     return rx.vstack(
-#                 rx.text(
-#                     my_title,
-#                     size="3",
-#                     weight="medium",
-#                     text_align="left",
-#                     width="100%",
-#                 ),
-#                 rx.input(
-#                     rx.input.slot(rx.icon(my_icon)),
-#                     placeholder=my_placeholder,
-#                     type="email",
-#                     size="3",
-#                     width="100%",
-#                     on_change=callback,
-#                 ),
-#                 justify="start",
-#                 spacing="2",
-#                 width="100%",
-#             )
+# New component: SimpleTextInput
+
+class SimpleTextInput(rx.ComponentState):
+    input_value: str = ""
+
+    @classmethod
+    def get_component(cls, **props):
+        # Extract the title (label) from props if provided, default to an empty string
+        title = props.pop("title", "")
+        value = props.pop("value", cls.input_value)
+        on_change = props.pop("on_change", cls.set_input_value)
+
+        # Create a title (label) component if the title prop is provided
+        #title_component = rx.text(title, font_weight="bold") if title else None
+
+        # Return a vertical stack (vstack) to render the title above the input field
+        return rx.vstack(
+            rx.text(title, font_weight="bold"),  # Only renders if title_component is not None
+            rx.input(
+                value=value,
+                on_change=on_change,
+                **props,  # Pass additional props like placeholder, style, etc.
+                width="100%",
+            ),
+            align="start",  # Align the items to the start (left)
+            width="100%",   # Ensure the input takes full width
+        )
+
+    @classmethod
+    def set_input_value(cls, value: str):
+        cls.input_value = value

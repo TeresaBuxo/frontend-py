@@ -17,5 +17,5 @@ class ProjectState(rx.State):
         if response.status_code == 200:
             self.projects = response.json()
 
-
+        
     
