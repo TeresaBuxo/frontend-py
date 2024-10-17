@@ -21,6 +21,14 @@ app = FastAPI(openapi_tags=tags_metadata)
 
 # add all routes
 app.include_router(default)
+# @default.get('/ping/')
+# def default_route():
+#     return "pong"
+
+# @default.get('/_event')
+# def default_route():
+#     return "The client is using an unsupported version of the Socket.IO or Engine.IO protocols"
+
 app.include_router(user_route)
 app.include_router(project_route)
 app.include_router(video_route)

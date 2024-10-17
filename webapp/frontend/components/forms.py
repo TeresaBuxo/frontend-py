@@ -26,13 +26,11 @@ class ProjectForm(rx.ComponentState):
     def handle_submit(cls):
 
         # Handle form submission (e.g., print or send data)
-        print(f"Form submitted with Name: {cls.name}, Email: {cls.name}")
+        print(f"Form submitted with Name:")
 
     @classmethod
     def get_component(cls, **props):
-        return rx.dialog.root(
-        rx.dialog.trigger(rx.icon_button("square-plus", size="3")),
-        rx.dialog.content(
+        return rx.dialog.content(
             rx.dialog.title(f"Add new Project"),
             rx.dialog.description(
                 f"Add new Project details",
@@ -68,23 +66,23 @@ class ProjectForm(rx.ComponentState):
                 # reset_on_submit=True,
             ),
             rx.flex(
-                    rx.dialog.close(
-                        rx.button(
-                            "Cancel",
-                            color_scheme="gray",
-                            variant="soft",
-                        ),
+                rx.dialog.close(
+                    rx.button(
+                        "Cancel",
+                        color_scheme="gray",
+                        variant="soft",
                     ),
-                    rx.dialog.close(
-                        rx.button("Save"),
-                        type ='submit',
-                        # on_click=cls.handle_submit,
-                    ),
-                    spacing="3",
-                    margin_top="16px",
-                    justify="end",
                 ),
+                rx.dialog.close(
+                    rx.button("Save"),
+                    type ='submit',
+                ),
+                spacing="3",
+                margin_top="16px",
+                justify="end",
             ),
+            width="100%",
+            reset_on_submit=True,
         )
 
 
@@ -113,13 +111,11 @@ class InstitutionForm(rx.ComponentState):
     @classmethod
     def handle_submit(cls):
         # Handle form submission (e.g., print or send data)
-        print(f"Form submitted with Name: {cls.name}, Email: {cls.name}")
+        print(f"Form submitted with Name")
 
     @classmethod
     def get_component(cls, **props):
-        return rx.dialog.root(
-        rx.dialog.trigger(rx.icon_button("square-plus", size="3")),
-        rx.dialog.content(
+        return rx.dialog.content(
             rx.dialog.title(f"Add new Institution"),
             rx.dialog.description(
                 f"Add new Institution details",
@@ -165,7 +161,6 @@ class InstitutionForm(rx.ComponentState):
                     rx.dialog.close(
                         rx.button("Save"),
                         type ='submit',
-                        # on_click=cls.handle_submit,
                     ),
                     spacing="3",
                     margin_top="16px",
@@ -174,7 +169,7 @@ class InstitutionForm(rx.ComponentState):
                 width="100%",
                 reset_on_submit=True,
         )
-        )
+
 
     
 class VideoForm(rx.ComponentState):
@@ -199,13 +194,11 @@ class VideoForm(rx.ComponentState):
     @classmethod
     def handle_submit(cls):
         # Handle form submission (e.g., print or send data)
-        print(f"Form submitted with Name: {cls.name}, Email: {cls.name}")
+        print(f"Form submitted ")
 
     @classmethod
     def get_component(cls, **props):
-        return rx.dialog.root(
-        rx.dialog.trigger(rx.icon_button("square-plus", size="3")),
-        rx.dialog.content(
+        return rx.dialog.content(
             rx.dialog.title(f"Add new Video"),
             rx.dialog.description(
                 f"Add new video details",
@@ -248,7 +241,6 @@ class VideoForm(rx.ComponentState):
                     rx.dialog.close(
                         rx.button("Save"),
                         type ='submit',
-                        # on_click=cls.handle_submit,
                     ),
                     spacing="3",
                     margin_top="16px",
@@ -258,4 +250,4 @@ class VideoForm(rx.ComponentState):
                 reset_on_submit=True,
             ),
         )
-        )
+        

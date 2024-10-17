@@ -1,4 +1,5 @@
 import reflex as rx
+from ..constants import urls
 
 class UploadState(rx.State):
     """The app state."""
@@ -15,7 +16,7 @@ class UploadState(rx.State):
         """
         for file in files:
             upload_data = await file.read()
-            outfile = rx.get_upload_dir() / file.filename
+            outfile = f"{urls.UPLOADED_FILES_DIR}/{file.filename}"
 
             # Save the file.
             with outfile.open("wb") as file_object:

@@ -1,4 +1,5 @@
 import reflex as rx
+from ..states.upload_state import UploadState
 
 def upload_image(title:str) -> rx.Component():
     return rx.vstack(
@@ -11,6 +12,11 @@ def upload_image(title:str) -> rx.Component():
         ),
         rx.upload(
             rx.vstack(
+                rx.button(
+                    "Select File",
+                    bg="white",
+                    border=f"1px solid",
+                ),
                 rx.text("Drag and drop files here \n or click to select files"),
                 align="center",
                 justify="center"),
@@ -29,7 +35,7 @@ def upload_image(title:str) -> rx.Component():
                 "image/webp": [".webp"],
                 "text/html": [".html", ".htm"],
             },
-            #on_click=UploadState.handle_upload(rx.upload_files(upload_id="my_upload")),
-            #on_drop=UploadState.handle_upload(rx.upload_files(upload_id="my_upload")),
+            on_click=UploadState.handle_upload(rx.upload_files(upload_id="my_upload")),
+            on_drop=UploadState.handle_upload(rx.upload_files(upload_id="my_upload")),
         ),
     )

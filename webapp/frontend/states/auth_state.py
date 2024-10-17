@@ -3,7 +3,7 @@ import reflex as rx
 import httpx
 from starlette.responses import Response
 from ..constants import urls
-from typing import Optional
+from typing import Optional,Dict
 import threading
 
 class AuthState(rx.State):
@@ -35,7 +35,7 @@ class AuthState(rx.State):
         try:
             async with httpx.AsyncClient() as client:
                 response = await client.post(
-                    "http://localhost:8000/api/users/token",
+                    f"{urls.API_URL}api/users/token",
                     data={
                         "username": self.email,
                         "password": self.password,
@@ -70,7 +70,7 @@ class AuthState(rx.State):
         try:
             async with httpx.AsyncClient() as client:
                 response = await client.post(
-                    "http://localhost:8000/api/users/create_user",
+                    f"{urls.API_URL}api/users/create_user",
                     json={
                         "email": self.email,
                         "password": self.password,

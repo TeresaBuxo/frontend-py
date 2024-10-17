@@ -18,6 +18,7 @@ PROJECTS_URL = '/projects'
 PROFILE_URL = '/profile'
 VIDEOS_URL = '/videos'
 COMMUNITY_PLATFORM = '/community'
+QUESTIONS_URL = '/questions'
 
 # social media
 YOUTUBE_URL = "https://www.youtube.com/@care-again-org"
@@ -26,3 +27,6 @@ LINKEDIN_URL = "https://linkedin.com/"
 
 # custom no_sql
 UPLOADED_FILES_DIR ='./no_sql'
+
+# api
+API_URL = 'http://0.0.0.0:8000/'

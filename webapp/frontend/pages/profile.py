@@ -3,10 +3,15 @@ from .platform_base import platform_base
 from ..constants import urls
 from ..components.forms_popover import add_new_popover
 from ..components.input_text import EditableText
-from ..states.project_state import ProjectState
+from ..components.list_institution import list_org_vertical
+from ..states.user_state import UserState
+from ..states.org_state import OrgState
 from ..states.auth_state import AuthState
 
 editable_text = EditableText.create
+
+class Profile():
+    value: str
 
 def section_title(section_icon:str,section_title:str, go_to_section:str,section_link:str) -> rx.Component():
     return rx.hstack(
@@ -17,11 +22,11 @@ def section_title(section_icon:str,section_title:str, go_to_section:str,section_
         color = "accent"
     )
 
-def input_field_edit(title:str) -> rx.Component():
+def input_field_edit(title:str,default_text:str) -> rx.Component():
     return rx.container(
         rx.vstack(
             rx.heading(title,size="3", color = "grey"),
-            editable_text()
+            editable_text(initial_value = default_text)
         ),
     )
 
@@ -46,11 +51,10 @@ def user_section() -> rx.Component():
             rx.hstack(
                 upload_image(),
                 rx.vstack(
-                    input_field_edit("First name"),
-                    input_field_edit("Last name"),
-                    input_field_edit("Second last name"),
-                    input_field_edit("Phone number"),
-                    input_field_edit("Change password"),
+                    input_field_edit(title= "First name",default_text=UserState.my_details['first_name']),
+                    # input_field_edit("Last name",UserState.my_details['last_name1']),
+                    # input_field_edit("Second last name",UserState.my_details['last_name2']),
+                    # input_field_edit("Phone number",UserState.my_details['phone_number']),
                 ),
                 align="center",
                 width="100vh"    
@@ -60,11 +64,10 @@ def user_section() -> rx.Component():
             rx.vstack(
                 upload_image(),
                 rx.vstack(
-                    input_field_edit("First name"),
-                    input_field_edit("Last name"),
-                    input_field_edit("Second last name"),
-                    input_field_edit("Phone number"),
-                    input_field_edit("Change password"),
+                    # input_field_edit("First name",UserState.my_details['first_name']),
+                    # input_field_edit("Last name",UserState.my_details['last_name1']),
+                    # input_field_edit("Second last name",UserState.my_details['last_name2']),
+                    # input_field_edit("Phone number",UserState.my_details['phone_number']),
                 ),
                 align="center",
                 width="100vh"    
@@ -83,7 +86,7 @@ def add_new(text:str)-> rx.Component():
     )
 
 
-@rx.page(route=urls.PROFILE_URL)#, on_load= ProjectState.get_list_projects)
+@rx.page(route=urls.PROFILE_URL, on_load= [UserState.get_my_details,OrgState.get_my_orgs])
 def profile() -> rx.Component:
     profile = rx.vstack(
                 rx.heading('My profile', size="9"),
@@ -92,6 +95,7 @@ def profile() -> rx.Component:
                 rx.divider(),
                 section_title("building-2",'My Institution',"Institutions", urls.PROJECTS_URL),
                 add_new("intitution"),
+                list_org_vertical(),
                 rx.divider(),
                 section_title("square-library",'My Projects',"Projects", urls.PROJECTS_URL),
                 add_new("project"),

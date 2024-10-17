@@ -1,5 +1,6 @@
 import reflex as rx
 import typing as Callable
+from ..states.user_state import UserState
 
 class EditableText(rx.ComponentState):
     text: str = "Click to edit"
@@ -23,10 +24,10 @@ class EditableText(rx.ComponentState):
         cursor = props.pop("cursor", "pointer")
 
         # Set the initial value of the State var.
-        initial_value = props.pop("initial_value", None)
-        if initial_value is not None:
-            # Update the pydantic model to use the initial value as default.
-            cls.__fields__["text"].default = initial_value
+        initial_value = props.pop("initial_value", cls.text)
+        # if initial_value is not None:
+        # # Update the pydantic model to use the initial value as default.
+        #     cls.__fields__["text"].default = initial_value
 
         # Form elements for editing, saving and reverting the text.
         edit_controls = rx.hstack(
@@ -44,7 +45,11 @@ class EditableText(rx.ComponentState):
                 type="button",
                 color_scheme="red",
             ),
-            rx.icon_button(rx.icon("check")),
+            rx.icon_button(rx.icon("check"),
+                           on_click=[
+                            on_change(cls.text),
+                            cls.stop_editing,
+                ],),
             align="center",
             width="100%",
         )

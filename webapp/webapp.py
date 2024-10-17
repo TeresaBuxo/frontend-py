@@ -2,7 +2,9 @@
 
 # frontend imports
 import reflex as rx
-from webapp.frontend.pages import login, projects, signup,platform, webpage,profile,videos,community #contact,community,
+from webapp.frontend.pages import (login, projects, signup,
+                                   platform, webpage,profile,
+                                   videos,community, questions) #contact,community,
 from webapp.frontend.constants import urls
 from rxconfig import config
 
@@ -16,6 +18,8 @@ from webapp.backend.routes.default import default
 from webapp.backend.routes.user_routes import user_route
 from webapp.backend.routes.project_routes import project_route
 from webapp.backend.routes.video_routes import video_route
+from webapp.backend.routes.organizations_routes import organization_route
+from webapp.backend.routes.question_routes import question_route
 # import model and db
 from webapp.backend.models import model
 from webapp.backend.config.db_setup import engine,Base,Session
@@ -44,6 +48,8 @@ app.api.include_router(default)
 app.api.include_router(user_route)
 app.api.include_router(project_route)
 app.api.include_router(video_route)
+app.api.include_router(organization_route)
+app.api.include_router(question_route)
 
 # CORS middleware to allow communication between frontend and backend
 origins = ['http://localhost:3000',

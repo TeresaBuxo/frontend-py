@@ -28,9 +28,8 @@ def platform_base(child: rx.Component ,*args,**kwargs) -> rx.Component:
                 )
             ),
         )
-    return platform
-    #rx.cond(
-    #     AuthState.is_authenticated,
-    #     platform,
-    #     login_page()
-    # )
+    return rx.cond(
+        AuthState.is_authenticated,
+        platform,
+        login_page()
+    )
